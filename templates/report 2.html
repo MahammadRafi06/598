@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Report</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .logo img {
+            max-width: 200px;
+            height: auto;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table th, table td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+        table th {
+            background-color: #f4f4f4;
+        }
+        .out-of-range {
+            background-color: #ffe6e6;
+        }
+        #download-btn {
+            display: inline-block;
+            margin: 20px 0;
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        #download-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <!-- Logo Section -->
+    <div class="logo">
+        <img src="{{ url_for('static', filename='images/Company_Logo.png') }}" alt="Company Logo" style="max-width: 200px; height: auto;">
+
+    </div>
+
+    <h1>Patient Report</h1>
+    
+    <div class="section">
+        <h2>Personal Details</h2>
+        <p><strong>Name:</strong> {{ patient_details.Name }}</p>
+        <p><strong>Date of Birth:</strong> {{ patient_details.DOB }}</p>
+        <p><strong>Sex:</strong> {{ patient_details.Sex }} </p>
+        <p><strong>Patient ID:</strong> {{ patient_details.Patient_ID }}</p>
+        <p><strong>Address:</strong> {{ patient_details.Address }}</p>
+        <p><strong>Phone:</strong> {{ patient_details.Phone }}</p>
+    </div>
+    
+    <div class="section">
+        <h2>Physician Details</h2>
+        <p><strong>Name:</strong> {{ patient_details.Provider }}</p>
+        <p><strong>Clinic:</strong> {{ patient_details.P_Clinic }}</p>
+        <p><strong>Address:</strong> {{ patient_details.P_Address }}</p>
+        <p><strong>Phone:</strong> {{ patient_details.P_Phone }}</p>
+    </div>
+    
+    <div class="section">
+        <h2>Diagnostics Results</h2> 
+        <table>
+            <thead>
+                <tr>
+                    <th>Age</th>
+                    <th>Chest Pain</th>
+                    <th>Resting blood pressure</th>
+                    <th>Cholestrol</th>
+                    <th>Fasting Blood Sugar</th>
+                    <th>Rest ECG</th>
+                    <th>Maximum Heart Rate</th>
+                    <th>Exercise induced angina</th>
+                    <th>ST depression</th>
+                    <th>The slope of the peak exercise ST segment</th>
+                    <th>Number of major vessels</th>
+                    <th>Defect Level</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ transaction.age}}</td>
+                    <td>{{ transaction.cp}}</td>
+                    <td>{{ transaction.trestbps}}</td>
+                    <td>{{ transaction.chol}}</td>
+                    <td>{{ transaction.fbs}}</td>
+                    <td>{{ transaction.restecg}}</td>
+                    <td>{{ transaction.thalach}}</td>
+                    <td>{{ transaction.exang}}</td>
+                    <td>{{ transaction.oldpeak}}</td>
+                    <td>{{ transaction.slope}}</td>
+                    <td>{{ transaction.ca}}</td>
+                    <td>{{ transaction.thal}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section">
+        <h2>Premieum Analysis</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Heart Health Check</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ analysis_summary }} </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <button id="download-pdf">Download as PDF</button>
+
+    <script>
+        document.getElementById("download-pdf").addEventListener("click", function () {
+            const content = document.body;
+
+            html2canvas(content, { scale: 2 }).then((canvas) => {
+                const imgData = canvas.toDataURL("image/png");
+                const pdf = new jspdf.jsPDF("p", "mm", "a4");
+
+                const pdfWidth = pdf.internal.pageSize.getWidth();
+                const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+
+                pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+                pdf.save("Patient_Report.pdf");
+            });
+        });
+    </script>
+</body>
+</html>

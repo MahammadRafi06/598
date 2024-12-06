@@ -1,0 +1,6 @@
+﻿Patient_ID,Name,DOB,Sex,Address,Phone,Provider,P_Clinic,P_Address,P_Phone
+1,Jane Doe,11/12/93,F,"1st Ave, Pike St., Seattle, WA",2340000567,Dr. Richard Geller,Heart Hope Clinic,"180th St., Kirkland, WA.",2340000572
+2,John Doe,12/3/92,M,"2nd Ave, Mercer Island, Seattle, WA.",2340000568,Dr. Richard Geller,Heart Hope Clinic,"181st St., Kirkland, WA.",2340000575
+3,Ken Adams,10/1/85,M,"3rd Terry Ave, Seattle, WA.",2340000569,Dr. Richard Geller,Heart Hope Clinic,"182nd St., Kirkland, WA.",2340000578
+4,Monica Bing,4/5/87,F,"142nd St., Ballard, WA.",2340000570,Dr. Richard Geller,Heart Hope Clinic,"183rd St., Kirkland, WA.",2340000581
+5,Gunther G.,6/17/82,M,"100th Boulevard, Shoreline, WA.",2340000571,Dr. Richard Geller,Heart Hope Clinic,"184th St., Kirkland, WA.",2340000584

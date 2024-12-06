@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results - CorpLab Premium Service</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Analysis Results</h1>
+        <form>
+            <div class="mb-3">
+                <label for="patientDetails" class="form-label">Patient Details</label>
+                <textarea class="form-control" id="patientDetails" name="patientDetails" rows="3" readonly>{{ patient_details }}</textarea>
+            </div>
+            <div class="mb-3">
+                <label for="analysisSummary" class="form-label">Summary</label>
+                <textarea class="form-control" id="analysisSummary" name="analysisSummary" rows="3" readonly>{{ analysis_summary }}</textarea>
+            </div>
+            <div class="text-center">
+                <a href="/" class="btn btn-primary">Go Back to Form</a>
+            </div>
+        </form>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

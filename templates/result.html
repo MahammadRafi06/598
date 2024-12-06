@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Report</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table th, table td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+        table th {
+            background-color: #f4f4f4;
+        }
+        .out-of-range {
+            background-color: #ffe6e6;
+        }
+        #download-btn {
+            display: inline-block;
+            margin: 20px 0;
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        #download-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Patient Report</h1>
+    
+    <div class="section">
+        <h2>Personal Details</h2>
+        <p><strong>Name:</strong> Smriti Kotiyal</p>
+        <p><strong>Date of Birth:</strong> 08/05/1994</p>
+        <p><strong>Age:</strong> 30</p>
+        <p><strong>Sex:</strong> Female</p>
+        <p><strong>Patient ID:</strong> 155019939</p>
+        <p><strong>Address:</strong> 7220 NE 182ND ST, Kenmore, WA, 98028</p>
+        <p><strong>Phone:</strong> 425-236-5542</p>
+    </div>
+    
+    <div class="section">
+        <h2>Physician Details</h2>
+        <p><strong>Name:</strong> T Mehendale</p>
+        <p><strong>Clinic:</strong> Medical Arts Associates</p>
+        <p><strong>Address:</strong> 1632 116TH AVE NE STE C, Bellevue, WA, 98004</p>
+        <p><strong>Phone:</strong> 425-454-8191</p>
+    </div>
+    
+    <div class="section">
+        <h2>Specimen Details</h2>
+        <p><strong>Specimen ID:</strong> 327-535-1549-0</p>
+        <p><strong>Date Collected:</strong> 11/22/2024</p>
+        <p><strong>Date Reported:</strong> 11/23/2024</p>
+    </div>
+    
+    <div class="section">
+        <h2>CBC Results</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Test</th>
+                    <th>Current Result</th>
+                    <th>Previous Result</th>
+                    <th>Units</th>
+                    <th>Reference Interval</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>WBC</td>
+                    <td>6.9</td>
+                    <td>6.4</td>
+                    <td>x10E3/uL</td>
+                    <td>3.4-10.8</td>
+                </tr>
+                <tr>
+                    <td>RBC</td>
+                    <td>4.50</td>
+                    <td>4.92</td>
+                    <td>x10E6/uL</td>
+                    <td>3.77-5.28</td>
+                </tr>
+                <!-- Add more CBC results here -->
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section">
+        <h2>Comprehensive Metabolic Panel</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Test</th>
+                    <th>Current Result</th>
+                    <th>Previous Result</th>
+                    <th>Units</th>
+                    <th>Reference Interval</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Glucose</td>
+                    <td>91</td>
+                    <td>89</td>
+                    <td>mg/dL</td>
+                    <td>70-99</td>
+                </tr>
+                <tr>
+                    <td>BUN</td>
+                    <td>9</td>
+                    <td>6</td>
+                    <td>mg/dL</td>
+                    <td>6-20</td>
+                </tr>
+                <!-- Add more Metabolic Panel results here -->
+            </tbody>
+        </table>
+    </div>
+
+    <button id="download-btn">Download as PDF</button>
+
+    <script>
+        document.getElementById('download-btn').addEventListener('click', function () {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            // Get HTML content of the body
+            const content = document.body.innerHTML;
+
+            // Use jsPDF to create PDF from the content
+            doc.html(content, {
+                callback: function (doc) {
+                    doc.save('Patient_Report.pdf');
+                },
+                x: 10,
+                y: 10
+            });
+        });
+    </script>
+</body>
+</html>

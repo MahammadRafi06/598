@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CorpLab Premium Service</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Welcome to CorpLab Premium Service</h1>
+        <form method="POST" action="/analyze">
+            <div class="mb-3">
+                <label for="patientName" class="form-label">Patient Name</label>
+                <input type="text" class="form-control" id="patientName" name="patientName" value="John Doe" >
+            </div>
+            <div class="mb-3">
+                <label for="dob" class="form-label">Date of Birth</label>
+                <input type="text" class="form-control" id="dob" name="dob" value="02 March 1962" >
+            </div>
+            <div class="mb-3">
+                <label for="patientID" class="form-label">Patient ID</label>
+                <input type="text" class="form-control" id="patientID" name="patientID" value="768789A" >
+            </div>
+            <div class="mb-3">
+                <label for="healthPlan" class="form-label">Health Plan</label>
+                <input type="text" class="form-control" id="healthPlan" name="healthPlan" value="Blue Cross Blue Shield- Washington" >
+            </div>
+            <div class="mb-3">
+                <label for="age" class="form-label">Age</label>
+                <input type="number" class="form-control" id="age" name="age" placeholder="in years" required>
+            </div>
+            <div class="mb-3">
+                <label for="sex" class="form-label">Sex</label>
+                <input type="text" class="form-control" id="sex" name="sex" placeholder="1 = male, 2 = female" required>
+            </div>
+            <div class="mb-3">
+                <label for="chestPainType" class="form-label">Chest Pain Type</label>
+                <input type="text" class="form-control" id="chestPainType" name="chestPainType" placeholder="1: typical angina, 2: atypical angina, 3: non-anginal pain, 4: asymptomatic" required>
+            </div>
+            <div class="mb-3">
+                <label for="restingBP" class="form-label">Resting Blood Pressure</label>
+                <input type="number" class="form-control" id="restingBP" name="restingBP" placeholder="in mm Hg" required>
+            </div>
+            <div class="mb-3">
+                <label for="cholesterol" class="form-label">Serum Cholesterol</label>
+                <input type="number" class="form-control" id="cholesterol" name="cholesterol" placeholder="in mm/dl" required>
+            </div>
+            <div class="mb-3">
+                <label for="fastingBS" class="form-label">Fasting Blood Sugar</label>
+                <input type="number" class="form-control" id="fastingBS" name="fastingBS" placeholder="If > 120 mg/dl enter 1, else enter 0" required>
+            </div>
+            <div class="mb-3">
+                <label for="restingECG" class="form-label">Resting Electrocardiographic Results</label>
+                <input type="number" class="form-control" id="restingECG" name="restingECG" placeholder="0: Normal, 1: ST-T wave abnormality, 2: LV hypertrophy" required>
+            </div>
+            <div class="mb-3">
+                <label for="maxHR" class="form-label">Maximum Heart Rate Achieved</label>
+                <input type="number" class="form-control" id="maxHR" name="maxHR" required>
+            </div>
+            <div class="mb-3">
+                <label for="exerciseAngina" class="form-label">Exercise Induced Angina</label>
+                <input type="number" class="form-control" id="exerciseAngina" name="exerciseAngina" placeholder="If yes enter 1, else enter 0" required>
+            </div>
+            <div class="mb-3">
+                <label for="stDepression" class="form-label">ST Depression</label>
+                <input type="number" class="form-control" id="stDepression" name="stDepression" step="any" required>
+            </div>
+            <div class="mb-3">
+                <label for="stSlope" class="form-label">Slope of Peak Exercise ST Segment</label>
+                <input type="text" class="form-control" id="stSlope" name="stSlope" placeholder="1: upsloping, 2: flat, 3: downsloping" required>
+            </div>
+            <div class="mb-3">
+                <label for="majorVessels" class="form-label">Number of Major Vessels</label>
+                <input type="number" class="form-control" id="majorVessels" name="majorVessels" placeholder="(0-3) colored by fluoroscopy" required>
+            </div>
+            <div class="mb-3">
+                <label for="thal" class="form-label">Thal Value</label>
+                <input type="text" class="form-control" id="thal" name="thal" placeholder="3 = normal; 6 = fixed defect; 7 = reversable defect" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Analyze</button>
+        </form>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
